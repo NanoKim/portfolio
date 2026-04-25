@@ -1,20 +1,51 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Header } from "./shared/ui/Header";
+import { ScrollIndicator } from "./components/ScrollIndicator";
+
 import { Section1 } from "./features/section1/Section1";
 import { Section2 } from "./features/section2/Section2";
 import { Section3 } from "./features/section3/Section3";
 import { Section4 } from "./features/section4/Section4";
-import { Section5 } from "./features/section5/Section5";
+
+const sections = ["section1", "section2", "section3", "section4"];
 
 export default function Home() {
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-40% 0px -50% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main>
-      <Header />
-      
+      <Header active={active} />
+      <ScrollIndicator active={active} sections={sections} />
+
       <Section1 />
       <Section2 />
       <Section3 />
       <Section4 />
-      <Section5 />
     </main>
   );
 }
