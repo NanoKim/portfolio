@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "./shared/ui/Header";
 import { ScrollIndicator } from "./components/ScrollIndicator";
+import { RightDock } from "./components/RightDock";
 
 import { Section1 } from "./features/section1/Section1";
 import { Section2 } from "./features/section2/Section2";
@@ -13,6 +14,7 @@ const sections = ["section1", "section2", "section3", "section4"];
 
 export default function Home() {
   const [active, setActive] = useState("");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,8 +41,9 @@ export default function Home() {
 
   return (
     <main>
-      <Header active={active} />
+      <Header active={active} open={open} setOpen={setOpen} />
       <ScrollIndicator active={active} sections={sections} />
+      <RightDock open={open} />
 
       <Section1 />
       <Section2 />

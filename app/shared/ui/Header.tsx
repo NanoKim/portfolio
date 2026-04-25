@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { Menu } from "./Menu";
 
 type Props = {
   active: string;
+  open: boolean;
+  setOpen: (v: boolean) => void;
 };
 
-export function Header({ active }: Props) {
-  const [open, setOpen] = useState(false);
-
+export function Header({ active, open, setOpen }: Props) {
   return (
     <>
       <header className="fixed top-6 left-0 right-0 flex justify-center z-50">
