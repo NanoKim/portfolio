@@ -89,7 +89,7 @@ export const StackS: Stack[] = [
   {
     id: "HeidiSQL",
     lev : "B",
-    path: "stack/logo_heidisql.png",
+    path: "stack/logo_heidiSql.png",
   },
   {
     id: "SVN",
