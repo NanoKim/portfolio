@@ -27,11 +27,10 @@ export function Header({ active, open, setOpen }: Props) {
           }}
         >
           <div className="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
-            <Image
+            <img
               src="/logo.png"
               alt="logo"
-              width={30}
-              height={30}
+              className="w-7 h-7"
             />
             <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold">
               NanoKim's portfolio
@@ -41,31 +40,28 @@ export function Header({ active, open, setOpen }: Props) {
           <div className="flex items-center gap-3 text-xs sm:text-sm whitespace-nowrap">
             
             <div className="flex items-center gap-1 sm:hidden">
-              <Image
+              <img
                 src="/logo_call.svg"
                 alt="phone"
-                width={14}
-                height={14}
+                className="w-4 h-4"
               />
               <span>+82 10 9190 7946</span>
             </div>
             <div className="hidden sm:flex items-center gap-3">
               <div className="flex items-center gap-1">
-                <Image
+                <img
                   src="/logo_call.svg"
                   alt="phone"
-                  width={16}
-                  height={16}
+                  className="w-4 h-4"
                 />
                 <span>+82 10 9190 7946</span>
               </div>
 
               <div className="flex items-center gap-1">
-                <Image
+                <img
                   src="/logo_email.svg"
                   alt="email"
-                  width={16}
-                  height={16}
+                  className="w-4 h-4"
                 />
                 <span>kjyyy7341@gmail.com</span>
               </div>

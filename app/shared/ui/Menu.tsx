@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Wallpaper } from "@/app/shared/ui/Wallpaper";
+import { SECTIONS } from "@/app/shared/constants/sections";
 
 type Props = {
   open: boolean;
@@ -9,7 +10,7 @@ type Props = {
   active: string;
 };
 
-const sections = ["section1", "section2", "section3", "section4"];
+const sections = SECTIONS.filter((s) => s.isMenu).map((s) => s.id);
 
 export function Menu({ open, setOpen, active }: Props) {
   const [visible, setVisible] = useState(false);

@@ -3,15 +3,16 @@
 import { useEffect, useState } from "react";
 import { Header } from "./shared/ui/Header";
 import { Wallpaper } from "./shared/ui/Wallpaper";
-import { ScrollIndicator } from "./components/ScrollIndicator";
-import { RightDock } from "./components/RightDock";
+import { ScrollIndicator } from "./shared/ui/ScrollIndicator";
+import { RightDock } from "./shared/ui/RightDock";
 
-import { Section1 } from "./widgets/section1/Section1";
-import { Section2 } from "./widgets/section2/Section2";
-import { Section3 } from "./widgets/section3/Section3";
-import { Section4 } from "./widgets/section4/Section4";
+import { Intro } from "./widgets/Intro";
+import { Section2 } from "./widgets/Section2";
+import { Section3 } from "./widgets/Section3";
+import { Section4 } from "./widgets/Section4";
+import { SECTIONS } from "@/app/shared/constants/sections";
 
-const sections = ["section1", "section2", "section3", "section4"];
+const sections = SECTIONS.map((s) => s.id);
 
 export default function Home() {
   const [active, setActive] = useState("");
@@ -47,7 +48,7 @@ export default function Home() {
       <ScrollIndicator active={active} sections={sections} />
       <RightDock open={open} />
 
-      <Section1 />
+      <Intro />
       <Section2 />
       <Section3 />
       <Section4 />
