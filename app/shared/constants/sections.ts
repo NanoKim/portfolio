@@ -11,11 +11,6 @@ export const SECTIONS: Section[] = [
     isMenu: true,
   },
   {
-    id: "collaboration",
-    label: "Collaboration",
-    isMenu: false,
-  },
-  {
     id: "section2",
     label: "About",
     isMenu: true,

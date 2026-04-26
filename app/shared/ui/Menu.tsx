@@ -10,7 +10,7 @@ type Props = {
   active: string;
 };
 
-const sections = SECTIONS.filter((s) => s.isMenu).map((s) => s.id);
+const menuSections = SECTIONS.filter((s) => s.isMenu);
 
 export function Menu({ open, setOpen, active }: Props) {
   const [visible, setVisible] = useState(false);
@@ -46,9 +46,26 @@ export function Menu({ open, setOpen, active }: Props) {
 
   const handleClose = () => {
     setVisible(false);
+
     setTimeout(() => {
       setOpen(false);
     }, 600);
+  };
+
+  const handleMenuClick = (id: string) => {
+    setVisible(false);
+    setTimeout(() => {
+      setOpen(false);
+
+      const el = document.getElementById(id);
+
+      if (el) {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 500);
   };
 
   return (
@@ -69,6 +86,7 @@ export function Menu({ open, setOpen, active }: Props) {
         `}
       >
         <Wallpaper />
+
         <div className="flex items-center justify-between p-4">
           <span className="font-bold text-lg">NanoKim</span>
           <button
@@ -80,13 +98,12 @@ export function Menu({ open, setOpen, active }: Props) {
         </div>
 
         <div className="flex-1 overflow-y-auto flex flex-col gap-6 px-6 mt-6">
-          {sections.map((id, index) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              onClick={handleClose}
-              className={`text-lg transition-all duration-500 ${
-                active === id
+          {menuSections.map((item, index) => (
+            <div
+              key={item.id}
+              onClick={() => handleMenuClick(item.id)}
+              className={`cursor-pointer text-lg transition-all duration-500 ${
+                active === item.id
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold"
                   : "text-white/80 hover:text-white hover:scale-105"
               } ${
@@ -97,19 +114,19 @@ export function Menu({ open, setOpen, active }: Props) {
               style={{
                 transitionDelay: visible
                   ? `${index * 80}ms`
-                  : `${(sections.length - index) * 80 + 200}ms`,
+                  : `${(menuSections.length - index) * 80 + 200}ms`,
               }}
             >
-              {id}
-            </a>
+              {item.label}
+            </div>
           ))}
         </div>
 
         <div className="p-6 flex gap-6">
           {[
-            { href: "https://github.com/NanoKim", src: "/logo_github.svg" },
-            { href: "https://www.linkedin.com/in/nanokim/", src: "/logo_linkedin.svg" },
-            { href: "mailto:kjyyy7341@gmail.com", src: "/logo_email.svg" },
+            { href: "https://github.com/NanoKim", src: "/icon/logo_github.svg" },
+            { href: "https://www.linkedin.com/in/nanokim/", src: "/icon/logo_linkedin.svg" },
+            { href: "mailto:kjyyy7341@gmail.com", src: "/icon/logo_email.svg" },
           ].map((item, index) => (
             <a
               key={item.src}
@@ -122,7 +139,7 @@ export function Menu({ open, setOpen, active }: Props) {
               }`}
               style={{
                 transitionDelay: visible
-                  ? `${(sections.length + index) * 80}ms`
+                  ? `${(menuSections.length + index) * 80}ms`
                   : `${(3 - index) * 80}ms`,
               }}
             >

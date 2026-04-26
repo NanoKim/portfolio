@@ -41,7 +41,7 @@ export function Header({ active, open, setOpen }: Props) {
             
             <div className="flex items-center gap-1 sm:hidden">
               <img
-                src="/logo_call.svg"
+                src="/icon/logo_call.svg"
                 alt="phone"
                 className="w-4 h-4"
               />
@@ -50,7 +50,7 @@ export function Header({ active, open, setOpen }: Props) {
             <div className="hidden sm:flex items-center gap-3">
               <div className="flex items-center gap-1">
                 <img
-                  src="/logo_call.svg"
+                  src="/icon/logo_call.svg"
                   alt="phone"
                   className="w-4 h-4"
                 />
@@ -59,7 +59,7 @@ export function Header({ active, open, setOpen }: Props) {
 
               <div className="flex items-center gap-1">
                 <img
-                  src="/logo_email.svg"
+                  src="/icon/logo_email.svg"
                   alt="email"
                   className="w-4 h-4"
                 />

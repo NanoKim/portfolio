@@ -36,17 +36,17 @@ export function Intro() {
           <div className="flex flex-col gap-3 text-sm md:text-base text-white/80">
             
             <div className="flex items-center gap-2 justify-center md:justify-start">
-              <img src="/logo_location.svg" className="w-5 h-5" />
+              <img src="/icon/logo_location.svg" className="w-5 h-5" />
               <span>서울시 광진구</span>
             </div>
 
             <div className="flex items-center gap-2 justify-center md:justify-start">
-              <img src="/logo_call.svg" className="w-5 h-5" />
+              <img src="/icon/logo_call.svg" className="w-5 h-5" />
               <span>+82 10 9190 7946</span>
             </div>
 
             <div className="flex items-center gap-2 justify-center md:justify-start">
-              <img src="/logo_email.svg" className="w-5 h-5" />
+              <img src="/icon/logo_email.svg" className="w-5 h-5" />
               <span>kjyyy7341@gmail.com</span>
             </div>
           </div>

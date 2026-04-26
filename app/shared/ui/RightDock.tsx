@@ -16,7 +16,7 @@ export function RightDock({ open }: Props) {
         target="_blank"
         className="hover:scale-110 transition"
       >
-        <img src="/logo_github.svg" className="w-5 h-5" />
+        <img src="/icon/logo_github.svg" className="w-5 h-5" />
       </a>
 
       <a
@@ -24,14 +24,14 @@ export function RightDock({ open }: Props) {
         target="_blank"
         className="hover:scale-110 transition"
       >
-        <img src="/logo_linkedin.svg" className="w-5 h-5" />
+        <img src="/icon/logo_linkedin.svg" className="w-5 h-5" />
       </a>
 
       <a
         href="mailto:kjyyy7341@gmail.com"
         className="hover:scale-110 transition"
       >
-        <img src="/logo_email.svg" className="w-5 h-5" />
+        <img src="/icon/logo_email.svg" className="w-5 h-5" />
       </a>
     </div>
   );
