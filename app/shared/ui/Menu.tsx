@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Wallpaper } from "@/app/shared/ui/Wallpaper";
 
 type Props = {
   open: boolean;
@@ -59,10 +60,14 @@ export function Menu({ open, setOpen, active }: Props) {
 
       <div
         id="side-menu"
-        className={`fixed top-0 right-0 h-full w-full sm:w-80 bg-white z-50 shadow-xl transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-full w-full sm:w-80 z-50 shadow-xl 
+          transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] 
+          flex flex-col
+          sm:border-l sm:border-white/10
+          ${open ? "translate-x-0" : "translate-x-full"}
+        `}
       >
+        <Wallpaper />
         <div className="flex items-center justify-between p-4">
           <span className="font-bold text-lg">NanoKim</span>
           <button
@@ -81,8 +86,8 @@ export function Menu({ open, setOpen, active }: Props) {
               onClick={handleClose}
               className={`text-lg transition-all duration-500 ${
                 active === id
-                  ? "text-blue-500 font-semibold"
-                  : "hover:text-blue-500"
+                  ? "bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold"
+                  : "text-white/80 hover:text-white hover:scale-105"
               } ${
                 visible
                   ? "opacity-100 translate-y-0"

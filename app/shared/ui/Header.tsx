@@ -13,8 +13,19 @@ export function Header({ active, open, setOpen }: Props) {
   return (
     <>
       <header className="fixed top-6 left-0 right-0 flex justify-center z-50">
-        <div className="w-full max-w-4xl flex items-center justify-between gap-6 px-6 py-3 rounded-full bg-white/70 backdrop-blur-md shadow-md border border-gray-200">
-
+        <div
+          className="
+          w-full max-w-4xl flex items-center justify-between gap-6 px-6 py-3
+          rounded-full backdrop-blur-md shadow-md
+          border border-transparent
+          "
+          style={{
+            background: `
+              linear-gradient(#000, #000) padding-box,
+              linear-gradient(to right, #93c5fd, #818cf8) border-box
+            `,
+          }}
+        >
           <div className="flex items-center gap-2 whitespace-nowrap flex-shrink-0">
             <Image
               src="/logo.png"
@@ -22,12 +33,12 @@ export function Header({ active, open, setOpen }: Props) {
               width={30}
               height={30}
             />
-            <span className="font-bold text-lg">
+            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold">
               NanoKim's portfolio
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-600 whitespace-nowrap">
+          <div className="flex items-center gap-3 text-xs sm:text-sm whitespace-nowrap">
             
             <div className="flex items-center gap-1 sm:hidden">
               <Image
@@ -66,11 +77,15 @@ export function Header({ active, open, setOpen }: Props) {
           <button
             id="menu-btn"
             onClick={() => setOpen(true)}
-            className="text-2xl p-2 transition cursor-pointer hover:text-blue-500"
+            className="
+              text-2xl p-2 cursor-pointer transition
+              text-[var(--text-color)]
+              hover:bg-gradient-to-r hover:from-blue-300 hover:to-indigo-400
+              hover:bg-clip-text hover:text-transparent
+            "
           >
             ☰
           </button>
-
         </div>
       </header>
 

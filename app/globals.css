@@ -7,17 +7,31 @@
   font-style: normal;
 }
 
+:root {
+  --text-color: #b3b3b3;
+}
+
 html, body {
   font-family: 'Pretendard-Regular';
+  color: var(--text-color);
 }
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 7px;
+  background: #000;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: rgba(173, 173, 173, 0.5);
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  background: linear-gradient(
+    to bottom,
+    #93c5fd,
+    #818cf8
+  );
+  box-shadow: 0 0 6px rgba(120, 180, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
 }
