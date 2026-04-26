@@ -16,13 +16,13 @@ export const SECTIONS: Section[] = [
     isMenu: true,
   },
   {
-    id: "section3",
-    label: "Projects",
+    id: "inventory",
+    label: "Inventory",
     isMenu: true,
   },
   {
-    id: "section4",
-    label: "Contact",
+    id: "stack",
+    label: "Stack",
     isMenu: true,
   },
 ];

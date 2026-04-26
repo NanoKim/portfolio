@@ -8,8 +8,8 @@ import { RightDock } from "./shared/ui/RightDock";
 
 import { Intro } from "./widgets/Intro";
 import { Roadmap } from "./widgets/Roadmap";
-import { Section3 } from "./widgets/Section3";
-import { Section4 } from "./widgets/Section4";
+import { Inventory } from "./widgets/Inventory";
+import { Stack } from "./widgets/Stack";
 import { SECTIONS } from "@/app/shared/constants/sections";
 
 const sections = SECTIONS.map((s) => s.id);
@@ -31,19 +31,13 @@ export default function Home() {
     }
   }, []);
 
-  // =========================
-  // 2. IntersectionObserver
-  // =========================
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.id;
-
             setActive(id);
-
-            // 🔥 URL sync 핵심
             window.history.replaceState(null, "", `#${id}`);
           }
         });
@@ -71,8 +65,8 @@ export default function Home() {
 
       <Intro />
       <Roadmap />
-      <Section3 />
-      <Section4 />
+      <Inventory />
+      <Stack />
     </main>
   );
 }

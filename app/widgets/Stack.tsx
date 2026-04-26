@@ -1,10 +1,10 @@
-export function Section3() {
+export function Stack() {
   return (
     <section
-      id="section3"
+      id="stack"
       className="h-screen flex items-center justify-center"
     >
-      Section3
+      Stack
     </section>
   );
 }
