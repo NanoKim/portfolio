@@ -9,20 +9,15 @@ export function Wallpaper() {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const mouse = { x: 0, y: 0 };
 
-    const mouse = { x: width / 2, y: height / 2 };
+    let width = 0;
+    let height = 0;
 
-    window.addEventListener("mousemove", (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
+    let stars: Star[] = [];
+    let meteors: Meteor[] = [];
 
-    window.addEventListener("resize", () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
+    const STAR_COUNT = 180;
 
     class Star {
       x: number;
@@ -67,9 +62,6 @@ export function Wallpaper() {
           this.baseX = this.x;
           this.baseY = this.y;
         }
-
-        this.opacity += (Math.random() - 0.5) * 0.05;
-        this.opacity = Math.max(0.2, Math.min(1, this.opacity));
       }
 
       draw() {
@@ -88,19 +80,16 @@ export function Wallpaper() {
       opacity: number;
 
       constructor() {
-        this.x = Math.random() * width * 0.5 + width * 0.5;
+        this.x = Math.random() * width;
         this.y = Math.random() * height * 0.3;
-
         this.length = Math.random() * 80 + 50;
         this.speed = Math.random() * 6 + 6;
-
         this.opacity = 1;
       }
 
       update() {
         this.x -= this.speed;
         this.y += this.speed * 0.6;
-
         this.opacity -= 0.01;
       }
 
@@ -132,14 +121,39 @@ export function Wallpaper() {
       }
     }
 
-    const stars: Star[] = [];
-    const meteors: Meteor[] = [];
+    const init = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
 
-    const STAR_COUNT = 180;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      canvas.width = width;
+      canvas.height = height;
 
-    for (let i = 0; i < STAR_COUNT; i++) {
-      stars.push(new Star());
-    }
+      stars = [];
+      meteors = [];
+
+      for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push(new Star());
+      }
+
+      mouse.x = width / 2;
+      mouse.y = height / 2;
+    };
+
+    const handleResize = () => {
+      init();
+    };
+
+    const handleMouse = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouse);
+
+    init();
 
     function drawBackground() {
       const gradient = ctx.createRadialGradient(
@@ -164,9 +178,9 @@ export function Wallpaper() {
 
       drawBackground();
 
-      stars.forEach((star) => {
-        star.update();
-        star.draw();
+      stars.forEach((s) => {
+        s.update();
+        s.draw();
       });
 
       if (Math.random() < 0.006) {
@@ -176,17 +190,24 @@ export function Wallpaper() {
       meteors.forEach((m, i) => {
         m.update();
         m.draw();
-
-        if (m.isDead()) {
-          meteors.splice(i, 1);
-        }
+        if (m.isDead()) meteors.splice(i, 1);
       });
 
       requestAnimationFrame(animate);
     }
 
     animate();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouse);
+    };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 -z-10" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 w-full h-full -z-10"
+    />
+  );
 }

@@ -7,7 +7,7 @@ import { ScrollIndicator } from "./shared/ui/ScrollIndicator";
 import { RightDock } from "./shared/ui/RightDock";
 
 import { Intro } from "./widgets/Intro";
-import { Section2 } from "./widgets/Section2";
+import { Roadmap } from "./widgets/Roadmap";
 import { Section3 } from "./widgets/Section3";
 import { Section4 } from "./widgets/Section4";
 import { SECTIONS } from "@/app/shared/constants/sections";
@@ -18,12 +18,33 @@ export default function Home() {
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
 
+  // =========================
+  // 1. URL → active 초기 세팅
+  // =========================
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      setActive(hash);
+
+      const el = document.getElementById(hash);
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
+  // =========================
+  // 2. IntersectionObserver
+  // =========================
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActive(entry.target.id);
+            const id = entry.target.id;
+
+            setActive(id);
+
+            // 🔥 URL sync 핵심
+            window.history.replaceState(null, "", `#${id}`);
           }
         });
       },
@@ -49,7 +70,7 @@ export default function Home() {
       <RightDock open={open} />
 
       <Intro />
-      <Section2 />
+      <Roadmap />
       <Section3 />
       <Section4 />
     </main>

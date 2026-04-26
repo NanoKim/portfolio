@@ -54,6 +54,7 @@ export function Menu({ open, setOpen, active }: Props) {
 
   const handleMenuClick = (id: string) => {
     setVisible(false);
+
     setTimeout(() => {
       setOpen(false);
 
@@ -64,6 +65,8 @@ export function Menu({ open, setOpen, active }: Props) {
           behavior: "smooth",
           block: "start",
         });
+
+        window.history.pushState(null, "", `#${id}`);
       }
     }, 500);
   };
