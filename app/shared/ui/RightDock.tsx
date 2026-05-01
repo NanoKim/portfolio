@@ -9,7 +9,7 @@ type Props = {
 export function RightDock({ open }: Props) {
   return (
     <div
-      className={`fixed right-6 top-1/2 -translate-y-1/2 z-40 transition-opacity duration-300 ${
+      className={`hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 transition-opacity duration-300 ${
         open ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
