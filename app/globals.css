@@ -16,6 +16,14 @@ html, body {
   color: var(--text-color);
 }
 
+body {
+  cursor: none;
+}
+
+button, a {
+  cursor: none !important;
+}
+
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 7px;

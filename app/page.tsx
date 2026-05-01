@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "./shared/ui/Header";
 import { Wallpaper } from "./shared/ui/Wallpaper";
+import { Cursor } from "./shared/ui/Cursor";
 import { ScrollIndicator } from "./shared/ui/ScrollIndicator";
 import { RightDock } from "./shared/ui/RightDock";
 
@@ -63,25 +64,27 @@ export default function Home() {
     return () => observer.disconnect();
   }, [entered]);
 
-  if (!entered) {
-    return (
-      <div className="fixed inset-0 z-50">
-        <Landing onEnter={() => setEntered(true)} />
-      </div>
-    );
-  }
-
   return (
-    <main>
-      <Header active={active} open={open} setOpen={setOpen} />
-      <Wallpaper />
-      <ScrollIndicator active={active} sections={sections} />
-      <RightDock open={open} />
+    <>
+      <Cursor />
 
-      <Intro />
-      <Roadmap />
-      <Inventory />
-      <Stack />
-    </main>
+      {!entered ? (
+        <div className="fixed inset-0 z-50">
+          <Landing onEnter={() => setEntered(true)} />
+        </div>
+      ) : (
+        <main>
+          <Header active={active} open={open} setOpen={setOpen} />
+          <Wallpaper />
+          <ScrollIndicator active={active} sections={sections} />
+          <RightDock open={open} />
+
+          <Intro />
+          <Roadmap />
+          <Inventory />
+          <Stack />
+        </main>
+      )}
+    </>
   );
 }

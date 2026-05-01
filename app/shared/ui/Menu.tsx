@@ -105,7 +105,7 @@ export function Menu({ open, setOpen, active }: Props) {
             <div
               key={item.id}
               onClick={() => handleMenuClick(item.id)}
-              className={`cursor-pointer text-lg transition-all duration-500 ${
+              className={`text-lg transition-all duration-500 ${
                 active === item.id
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold"
                   : "text-white/80 hover:text-white hover:scale-105"
