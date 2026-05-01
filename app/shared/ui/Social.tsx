@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Popup from "@/app/components/Popup";
+import dynamic from "next/dynamic";
+
+const Popup = dynamic(() => import("@/app/components/Popup"), {
+  ssr: false,
+});
 
 type Props = {
   direction?: "row" | "col";
