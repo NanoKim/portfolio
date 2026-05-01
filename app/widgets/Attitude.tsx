@@ -83,10 +83,9 @@ export function Attitude() {
             
             <div className="z-30 flex flex-col items-center gap-3">
                <div className="relative w-24 h-24 filter drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] drop-shadow-[0_0_30px_rgba(168,85,247,0.4)]">
-                 <Image 
+                 <img 
                     src="/nano.png" 
                     alt="Nano Logo" 
-                    fill 
                     className="object-contain"
                  />
                </div>
