@@ -3,7 +3,7 @@ import { TagRow } from "../components/TagRow";
 
 export function Inventory() {
   return (
-    <section id="inventory" className="min-h-screen flex items-center justify-center px-4 bg-[#070a0f]">
+    <section id="inventory" className="min-h-screen flex items-center justify-center px-4">
       <div
         className="
           grid gap-4 sm:gap-6

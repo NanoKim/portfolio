@@ -14,17 +14,17 @@ export type Project = {
 
 export const SECTIONS: Project[] = [
   {
-    title: "TBU",
+    title: "상시 감시 시스템",
     period: "2026.04 ~ 現",
-    customer: "TBU",
+    customer: "신한카드",
     affiliation: "유브갓프렌즈",
-    role: ["TBU"],
-    charge: ["TBU"],
-    language: ["TBU"],
-    frontend: ["TBU"],
-    backend: ["TBU"],
-    database: ["TBU"],
-    etc: ["TBU"]
+    role: ["개발"],
+    charge: ["Backend"],
+    language: ["Java", "JavaScript"],
+    frontend: ["jQuery", "Ajax"],
+    backend: ["Spring Boot", "Thymeleaf"],
+    database: ["Oracle"],
+    etc: ["MyBatis", "Orange"]
   },
   {
     title: "금융 책무구조도 관리 솔루션 구축",
@@ -60,7 +60,7 @@ export const SECTIONS: Project[] = [
     role: ["개발"],
     charge: ["Frontend", "Backend"],
     language: ["Java", "JavaScript"],
-    frontend: ["JSP"],
+    frontend: ["JSP", "jQuery", "Ajax"],
     backend: ["Spring Boot", "Node.js"],
     database: ["MariaDB"],
     etc: ["Tomcat", "Eclipse", "MyBatis", "HeidiSQL", "SVN"]

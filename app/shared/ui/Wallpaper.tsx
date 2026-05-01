@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export function Wallpaper() {
+export function Wallpaper({ variant = "space" }: { variant?: "space" | "dark" }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export function Wallpaper() {
       size: number;
       speed: number;
       opacity: number;
+      color: string;
 
       constructor() {
         this.x = Math.random() * width;
@@ -36,6 +37,13 @@ export function Wallpaper() {
         this.size = Math.random() * 1.5;
         this.speed = Math.random() * 0.3 + 0.05;
         this.opacity = Math.random();
+
+        const colors = [
+          "255,255,255",
+          "180,150,255",
+          "150,200,255",
+        ];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
       update() {
@@ -66,7 +74,7 @@ export function Wallpaper() {
 
       draw() {
         ctx.beginPath();
-        ctx.fillStyle = `rgba(255,255,255,${this.opacity})`;
+        ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
       }
@@ -125,8 +133,6 @@ export function Wallpaper() {
       width = window.innerWidth;
       height = window.innerHeight;
 
-      canvas.style.width = "100%";
-      canvas.style.height = "100%";
       canvas.width = width;
       canvas.height = height;
 
@@ -141,10 +147,7 @@ export function Wallpaper() {
       mouse.y = height / 2;
     };
 
-    const handleResize = () => {
-      init();
-    };
-
+    const handleResize = () => init();
     const handleMouse = (e: MouseEvent) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
@@ -156,20 +159,71 @@ export function Wallpaper() {
     init();
 
     function drawBackground() {
+      if (variant === "dark") {
+        const gradient = ctx.createRadialGradient(
+          width / 2,
+          height / 2,
+          0,
+          width / 2,
+          height / 2,
+          width
+        );
+
+        gradient.addColorStop(0, "#050505");
+        gradient.addColorStop(0.5, "#020202");
+        gradient.addColorStop(1, "#000000");
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        return;
+      }
+
       const gradient = ctx.createRadialGradient(
-        width / 2,
-        height / 2,
+        width * 0.5,
+        height * 0.4,
         0,
-        width / 2,
-        height / 2,
+        width * 0.5,
+        height * 0.5,
         width
       );
 
-      gradient.addColorStop(0, "#120a1f");
-      gradient.addColorStop(0.5, "#070612");
-      gradient.addColorStop(1, "#000000");
+      gradient.addColorStop(0, "#1a1035");
+      gradient.addColorStop(0.4, "#0b0a20");
+      gradient.addColorStop(1, "#02030a");
 
       ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      const aurora = ctx.createRadialGradient(
+        width * 0.5,
+        height * 0.3,
+        0,
+        width * 0.5,
+        height * 0.3,
+        width * 0.6
+      );
+
+      aurora.addColorStop(0, "rgba(120,80,255,0.25)");
+      aurora.addColorStop(0.5, "rgba(80,150,255,0.15)");
+      aurora.addColorStop(1, "rgba(0,0,0,0)");
+
+      ctx.fillStyle = aurora;
+      ctx.fillRect(0, 0, width, height);
+
+      const nebula = ctx.createRadialGradient(
+        width * 0.3,
+        height * 0.6,
+        0,
+        width * 0.3,
+        height * 0.6,
+        width * 0.5
+      );
+
+      nebula.addColorStop(0, "rgba(200,100,255,0.15)");
+      nebula.addColorStop(1, "rgba(0,0,0,0)");
+
+      ctx.fillStyle = nebula;
       ctx.fillRect(0, 0, width, height);
     }
 

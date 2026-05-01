@@ -10,6 +10,8 @@ import { Intro } from "./widgets/Intro";
 import { Roadmap } from "./widgets/Roadmap";
 import { Inventory } from "./widgets/Inventory";
 import { Stack } from "./widgets/Stack";
+import { Landing } from "./widgets/Landing";
+
 import { SECTIONS } from "@/app/shared/constants/sections";
 
 const sections = SECTIONS.map((s) => s.id);
@@ -17,21 +19,22 @@ const sections = SECTIONS.map((s) => s.id);
 export default function Home() {
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
+  const [entered, setEntered] = useState(false);
 
-  // =========================
-  // 1. URL → active 초기 세팅
-  // =========================
   useEffect(() => {
+    if (!entered) return;
+
     const hash = window.location.hash.replace("#", "");
     if (hash) {
       setActive(hash);
-
       const el = document.getElementById(hash);
       el?.scrollIntoView({ behavior: "smooth" });
     }
-  }, []);
+  }, [entered]);
 
   useEffect(() => {
+    if (!entered) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -54,7 +57,7 @@ export default function Home() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [entered]);
 
   return (
     <main>
@@ -67,6 +70,12 @@ export default function Home() {
       <Roadmap />
       <Inventory />
       <Stack />
+
+      {!entered && (
+        <div className="fixed inset-0 z-50">
+          <Landing onEnter={() => setEntered(true)} />
+        </div>
+      )}
     </main>
   );
 }

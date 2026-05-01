@@ -23,7 +23,7 @@ export function Roadmap() {
     { id: "F", view: "2025.03 ~ 2025.12", title: "카카오뱅크", desc: "책무구조도 운영 시스템 구축" },
     { id: "G", view: "2026.01 ~ 2026.04", title: "로이솔루션", desc: "고가용성(HA) 금융 책무구조도 관리 솔루션 구축" },
     { id: "H", view: "2026.04", title: "유브갓프렌즈", desc: "개발팀 입사" },
-    { id: "I", view: "2026.04 ~ 現", title: "TBU", desc: "프로젝트 진행중" },
+    { id: "I", view: "2026.04 ~ 現", title: "신한카드", desc: "상시 감시 시스템 구축" },
   ];
 
   const pathOrder = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];

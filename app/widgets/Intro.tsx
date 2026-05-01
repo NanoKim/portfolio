@@ -1,3 +1,5 @@
+import { Logo } from "../components/Logo";
+
 export function Intro() {
   return (
     <section
@@ -7,17 +9,7 @@ export function Intro() {
       <div className="w-full max-w-5xl flex flex-col md:flex-row items-center gap-10">
         
         <div className="shrink-0">
-          <img
-            src="/profile.jpg"
-            alt="profile"
-            className="
-              w-56 h-56
-              md:w-64 md:h-64
-              object-cover
-              rounded-2xl
-              shadow-lg
-            "
-          />
+          <Logo size="xl" />
         </div>
 
         <div className="flex flex-col gap-6 text-center md:text-left">

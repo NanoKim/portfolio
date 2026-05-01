@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Menu } from "./Menu";
 
 type Props = {
@@ -20,10 +19,11 @@ export function Header({ active, open, setOpen }: Props) {
           border border-transparent
           "
           style={{
-            background: `
-              linear-gradient(#000, #000) padding-box,
-              linear-gradient(to right, #93c5fd, #818cf8) border-box
-            `,
+            background: "transparent",
+            border: "1px solid transparent",
+            borderRadius: "9999px",
+            boxShadow:
+              "0 0 0 1px rgba(99, 102, 241, 0.9), 0 0 0 2px rgba(168, 85, 247, 0.7) inset, 0 0 12px rgba(139, 92, 246, 0.4)",
           }}
         >
           <div className="flex items-center gap-2 whitespace-nowrap flex-shrink-0">

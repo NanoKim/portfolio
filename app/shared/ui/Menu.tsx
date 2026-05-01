@@ -88,7 +88,7 @@ export function Menu({ open, setOpen, active }: Props) {
           ${open ? "translate-x-0" : "translate-x-full"}
         `}
       >
-        <Wallpaper />
+        <Wallpaper variant="dark" />
 
         <div className="flex items-center justify-between p-4">
           <span className="font-bold text-lg">NanoKim</span>
