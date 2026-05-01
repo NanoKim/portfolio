@@ -1,7 +1,7 @@
 "use client";
 
-import { Logo } from "../components/Logo";
-import { fonts } from "../components/Font";
+import { Logo } from "@/app/components/Logo";
+import { fonts } from "@/app/components/Font";
 
 export function Intro() {
   return (
