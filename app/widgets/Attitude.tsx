@@ -1,6 +1,6 @@
 "use client";
 
-import { fonts } from "@/app/components/Font";
+import { fonts } from "@/app/components/FontTmp";
 
 const LEFT_ITEMS = [
   { title: "몰입 & 실행", desc: "빠르게 맥락을 파악하고, 바로 실행으로 연결합니다. 중간에 멈추지 않고 결과로 증명합니다.", point: "실행" },
