@@ -15,7 +15,7 @@ export function Header({ active, open, setOpen }: Props) {
 
   return (
     <>
-      <header className="fixed top-6 left-0 right-0 flex justify-center z-[10000]">
+      <header className="fixed top-6 left-0 right-0 flex justify-center z-[30]">
         <div className="w-full max-w-4xl px-4">
           <div
             className="relative w-full flex items-center justify-between gap-6 px-6 py-3 backdrop-blur-md shadow-md"

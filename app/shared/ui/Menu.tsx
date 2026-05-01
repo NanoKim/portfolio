@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Wallpaper } from "@/app/shared/ui/Wallpaper";
 import { SECTIONS } from "@/app/shared/constants/sections";
+import { Social } from "@/app/shared/ui/Social";
 
 type Props = {
   open: boolean;
@@ -46,7 +47,6 @@ export function Menu({ open, setOpen, active }: Props) {
 
   const handleClose = () => {
     setVisible(false);
-
     setTimeout(() => {
       setOpen(false);
     }, 600);
@@ -54,18 +54,14 @@ export function Menu({ open, setOpen, active }: Props) {
 
   const handleMenuClick = (id: string) => {
     setVisible(false);
-
     setTimeout(() => {
       setOpen(false);
-
       const el = document.getElementById(id);
-
       if (el) {
         el.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
-
         window.history.pushState(null, "", `#${id}`);
       }
     }, 500);
@@ -91,7 +87,7 @@ export function Menu({ open, setOpen, active }: Props) {
         <Wallpaper variant="dark" />
 
         <div className="flex items-center justify-between p-4">
-          <span className="font-bold text-lg">NanoKim</span>
+          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold text-lg">NanoKim</span>
           <button
             onClick={handleClose}
             className="text-xl p-1 cursor-pointer"
@@ -125,30 +121,12 @@ export function Menu({ open, setOpen, active }: Props) {
           ))}
         </div>
 
-        <div className="p-6 flex gap-6">
-          {[
-            { href: "https://github.com/NanoKim", src: "/icon/logo_github.svg" },
-            { href: "https://www.linkedin.com/in/nanokim/", src: "/icon/logo_linkedin.svg" },
-            { href: "mailto:kjyyy7341@gmail.com", src: "/icon/logo_email.svg" },
-          ].map((item, index) => (
-            <a
-              key={item.src}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              className={`transition-all duration-500 ${
-                visible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-              style={{
-                transitionDelay: visible
-                  ? `${(menuSections.length + index) * 80}ms`
-                  : `${(3 - index) * 80}ms`,
-              }}
-            >
-              <img src={item.src} className="w-6 h-6" />
-            </a>
-          ))}
+        <div className="p-6">
+          <Social 
+            direction="row" 
+            visible={visible} 
+            baseDelay={menuSections.length * 80} 
+          />
         </div>
       </div>
     </>

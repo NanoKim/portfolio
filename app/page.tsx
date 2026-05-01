@@ -14,6 +14,7 @@ import { Stack } from "./widgets/Stack";
 import { Landing } from "./widgets/Landing";
 
 import { SECTIONS } from "@/app/shared/constants/sections";
+import { Attitude } from "./widgets/Attitude";
 
 const sections = SECTIONS.map((s) => s.id);
 
@@ -83,6 +84,7 @@ export default function Home() {
           <Roadmap />
           <Inventory />
           <Stack />
+          <Attitude />
         </main>
       )}
     </>

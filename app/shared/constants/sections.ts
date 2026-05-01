@@ -25,4 +25,9 @@ export const SECTIONS: Section[] = [
     label: "Stack",
     isMenu: true,
   },
+  {
+    id: "attitude",
+    label: "Attitude",
+    isMenu: true,
+  },
 ];
