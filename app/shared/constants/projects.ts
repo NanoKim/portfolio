@@ -14,7 +14,7 @@ export type Project = {
 
 export const SECTIONS: Project[] = [
   {
-    title: "상시 감시 시스템",
+    title: "상시 감시 시스템 구축",
     period: "2026.04 ~ 現",
     customer: "신한카드",
     affiliation: "유브갓프렌즈",

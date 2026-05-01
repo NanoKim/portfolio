@@ -14,18 +14,30 @@ export function Inventory() {
         {SECTIONS.map((item, i) => (
           <div
             key={i}
-            className="
-              w-full rounded-xl p-[1px]
-              bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500
-            "
+            className="w-full rounded-xl relative shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+            style={{
+              background: "transparent",
+            }}
           >
-            <div className="h-full rounded-xl bg-[#111827] shadow-[0_10px_40px_rgba(0,0,0,0.5)] p-5 text-white space-y-3">
-
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                borderRadius: "12px",
+                padding: "1px",
+                background: "linear-gradient(to right, #3b82f6, #6366f1, #a855f7)",
+                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMaskComposite: "destination-out",
+                maskComposite: "exclude",
+                pointerEvents: "none",
+              }}
+            />
+            
+            <div className="relative h-full p-5 text-white space-y-3">
               <div className="flex justify-between items-start">
                 <div className="text-sm sm:text-base font-semibold">
                   {item.title}
                 </div>
-
                 <div className="text-xs">
                   {item.period}
                 </div>
@@ -77,7 +89,6 @@ export function Inventory() {
               <div className="text-sm leading-relaxed">
                 <TagRow items={item.etc} />
               </div>
-
             </div>
           </div>
         ))}

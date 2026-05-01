@@ -22,6 +22,10 @@ export default function Home() {
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
+    document.body.style.overflow = entered ? "auto" : "hidden";
+  }, [entered]);
+
+  useEffect(() => {
     if (!entered) return;
 
     const hash = window.location.hash.replace("#", "");
@@ -59,6 +63,14 @@ export default function Home() {
     return () => observer.disconnect();
   }, [entered]);
 
+  if (!entered) {
+    return (
+      <div className="fixed inset-0 z-50">
+        <Landing onEnter={() => setEntered(true)} />
+      </div>
+    );
+  }
+
   return (
     <main>
       <Header active={active} open={open} setOpen={setOpen} />
@@ -70,12 +82,6 @@ export default function Home() {
       <Roadmap />
       <Inventory />
       <Stack />
-
-      {!entered && (
-        <div className="fixed inset-0 z-50">
-          <Landing onEnter={() => setEntered(true)} />
-        </div>
-      )}
     </main>
   );
 }
