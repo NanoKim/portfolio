@@ -1,6 +1,6 @@
 "use client";
 
-import { fonts } from "../components/font";
+import { fonts } from "../components/Font";
 import Image from "next/image";
 
 const LEFT_ITEMS = [
