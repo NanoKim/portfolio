@@ -16,9 +16,9 @@ export function Header({ active, open, setOpen }: Props) {
   return (
     <>
       <header className="fixed top-6 left-0 right-0 flex justify-center z-[30]">
-        <div className="w-full max-w-4xl px-4">
+        <div className="w-full max-w-4xl px-6">
           <div
-            className="relative w-full flex items-center justify-between gap-6 px-6 py-3 backdrop-blur-md shadow-md"
+            className="relative w-full flex items-center justify-between gap-4 px-5 py-3 backdrop-blur-md shadow-md"
             style={{
               background: "transparent",
               borderRadius: "9999px",
@@ -40,37 +40,29 @@ export function Header({ active, open, setOpen }: Props) {
 
             <div 
               onClick={handleLogoClick}
-              className="relative z-10 flex items-center gap-2 whitespace-nowrap flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+              className="relative z-10 flex items-center gap-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
             >
-              <img src="/logo.png" className="w-7 h-7" alt="Logo" />
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold">
+              <img src="/logo.png" className="w-6 h-6 sm:w-7 sm:h-7" alt="Logo" />
+              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold text-sm sm:text-base">
                 NanoKim's portfolio
               </span>
             </div>
 
-            <div className="relative z-10 flex items-center gap-3 text-xs sm:text-sm whitespace-nowrap">
-              <div className="flex items-center gap-1 sm:hidden">
+            <div className="relative z-10 hidden sm:flex items-center gap-3 text-xs sm:text-sm whitespace-nowrap">
+              <div className="flex items-center gap-1">
                 <img src="/icon/logo_call.svg" className="w-4 h-4" alt="Call" />
                 <span>+82 10 9190 7946</span>
               </div>
-
-              <div className="hidden sm:flex items-center gap-3">
-                <div className="flex items-center gap-1">
-                  <img src="/icon/logo_call.svg" className="w-4 h-4" alt="Call" />
-                  <span>+82 10 9190 7946</span>
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <img src="/icon/logo_email.svg" className="w-4 h-4" alt="Email" />
-                  <span>kjyyy7341@gmail.com</span>
-                </div>
+              <div className="hidden md:flex items-center gap-1">
+                <img src="/icon/logo_email.svg" className="w-4 h-4" alt="Email" />
+                <span>kjyyy7341@gmail.com</span>
               </div>
             </div>
 
             <button
               onClick={() => setOpen(true)}
               className="
-                relative z-10 text-2xl p-2 cursor-pointer transition-all duration-300
+                relative z-10 text-xl sm:text-2xl p-2 flex-shrink-0 cursor-pointer transition-all duration-300
                 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-purple-500
                 hover:bg-clip-text hover:text-transparent
                 active:scale-90
