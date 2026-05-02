@@ -133,20 +133,47 @@ export function WhoAmI() {
     },
   ];
 
+  const keywords = ["Stability", "Scalability", "Optimization", "Fintech"];
+
   return (
     <section id="whoami" className="relative min-h-screen py-32 px-6 overflow-hidden">
       <Title text="Who am I?" />
       
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[120px] animate-pulse" />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="mb-24 text-center space-y-6 flex flex-col items-center">
+        <div className="mb-24 text-center space-y-10 flex flex-col items-center">
           <p className="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto break-keep">
             단순한 구현을 넘어 <span className="text-white font-medium">풀스택 엔지니어링</span>으로 비즈니스의 정답을 제시합니다.
           </p>
+          
+          <div className="flex flex-wrap justify-center gap-6">
+            {keywords.map((kw, i) => (
+              <div key={i} className="relative group">
+                <div 
+                  className="absolute inset-0 rounded-full p-[1px] transition-all duration-700"
+                  style={{
+                    background: "linear-gradient(90deg, #3b82f6, #a855f7, #3b82f6, #a855f7)",
+                    backgroundSize: "300% 100%",
+                    animation: "border-wave 4s linear infinite",
+                    WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                    WebkitMaskComposite: "destination-out",
+                    maskComposite: "exclude",
+                  }}
+                />
+                <div className="absolute inset-0 rounded-full bg-blue-500/0 group-hover:bg-blue-500/10 blur-xl transition-all duration-500 opacity-0 group-hover:opacity-100" />
+                <div className="relative px-6 py-2 rounded-full transition-transform duration-300 group-hover:scale-105 flex items-center gap-2">
+                  <span className="text-blue-400 font-black text-sm">#</span>
+                  <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-slate-300 group-hover:text-white transition-colors duration-300">
+                    {kw}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
@@ -165,6 +192,10 @@ export function WhoAmI() {
         @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
+        }
+        @keyframes border-wave {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 300% 50%; }
         }
         .animate-gradient {
           animation: gradient 6s ease infinite;

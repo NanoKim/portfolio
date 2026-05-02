@@ -28,7 +28,6 @@ export function Contact() {
       className="relative min-h-[80vh] flex flex-col items-center justify-center px-6 py-32 overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      <Title text="Contact" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="max-w-4xl w-full text-center space-y-16 relative z-10">

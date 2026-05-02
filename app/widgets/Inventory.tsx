@@ -98,7 +98,6 @@ function InventoryCard({ item }: { item: any }) {
 export function Inventory() {
   return (
     <section id="inventory" className="min-h-screen flex flex-col items-center justify-center px-4 py-20">
-      <Title text="Inventory" />
       <div className="grid gap-4 sm:gap-6 w-full max-w-5xl grid-cols-[repeat(auto-fill,minmax(330px,1fr))]">
         {SECTIONS.map((item, i) => (
           <InventoryCard key={i} item={item} />

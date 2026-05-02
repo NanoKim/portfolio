@@ -20,7 +20,6 @@ export function Attitude() {
 
   return (
     <section id="attitude" className="py-20 px-6 text-white overflow-hidden">
-      <Title text="Attitude" />
       <div className="max-w-6xl mx-auto flex flex-col gap-10 md:gap-14">
         
         <div className="text-center space-y-4">
