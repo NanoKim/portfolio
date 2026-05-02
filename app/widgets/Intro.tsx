@@ -24,31 +24,59 @@ export function Intro() {
               tracking-tight
             `}
           >
-            <span 
-              className="
-                bg-gradient-to-tr from-slate-400 via-slate-300 to-blue-200
-                bg-clip-text text-transparent 
-                drop-shadow-[0_0_15px_rgba(148,163,184,0.1)]
-              "
-            >
-              비즈니스 요구사항을 명확한 코드로 풀어내는 <br className="hidden md:block" />
-              실전형 개발자
-            </span>
-            
-            <span className="relative inline-block mx-3">
-              <span className="bg-gradient-to-r from-[#4facfe] to-[#8a2be2] bg-clip-text text-transparent font-bold">
-                김재영
+            <div className="flex flex-col gap-2">
+              <span 
+                className="
+                  bg-gradient-to-tr from-slate-400 via-slate-300 to-blue-200
+                  bg-clip-text text-transparent 
+                  drop-shadow-[0_0_15px_rgba(148,163,184,0.1)]
+                "
+              >
+                추상적인 비즈니스 요구사항을
               </span>
-            </span>
+              
+              <div className="flex justify-center items-center gap-3">
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-[#4facfe] to-[#8a2be2] bg-clip-text text-transparent font-bold">
+                    명확하고 견고한 코드
+                  </span>
+                </span>
+                <span 
+                  className="
+                    bg-gradient-to-tr from-slate-400 via-slate-300 to-blue-200
+                    bg-clip-text text-transparent
+                  "
+                >
+                  로 설계하는
+                </span>
+              </div>
 
-            <span 
-              className="
-                bg-gradient-to-tr from-slate-400 via-slate-300 to-blue-200
-                bg-clip-text text-transparent
-              "
-            >
-              입니다.
-            </span>
+              <div className="flex flex-wrap justify-center items-center gap-3">
+                <span 
+                  className="
+                    bg-gradient-to-tr from-slate-400 via-slate-300 to-blue-200
+                    bg-clip-text text-transparent
+                  "
+                >
+                  실전형 개발자
+                </span>
+
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-[#4facfe] to-[#8a2be2] bg-clip-text text-transparent font-bold">
+                    김재영
+                  </span>
+                </span>
+
+                <span 
+                  className="
+                    bg-gradient-to-tr from-slate-400 via-slate-300 to-blue-200
+                    bg-clip-text text-transparent
+                  "
+                >
+                  입니다.
+                </span>
+              </div>
+            </div>
           </h1>
         </div>
 

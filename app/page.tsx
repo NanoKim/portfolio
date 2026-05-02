@@ -6,15 +6,16 @@ import { Wallpaper } from "./shared/ui/Wallpaper";
 import { Cursor } from "./shared/ui/Cursor";
 import { ScrollIndicator } from "./shared/ui/ScrollIndicator";
 import { RightDock } from "./shared/ui/RightDock";
+import { Landing } from "./widgets/Landing";
 
 import { Intro } from "./widgets/Intro";
 import { Roadmap } from "./widgets/Roadmap";
 import { Inventory } from "./widgets/Inventory";
 import { Stack } from "./widgets/Stack";
-import { Landing } from "./widgets/Landing";
+import { Attitude } from "./widgets/Attitude";
+import { Contact } from "./widgets/Contact";
 
 import { SECTIONS } from "@/app/shared/constants/sections";
-import { Attitude } from "./widgets/Attitude";
 import { FadeIn } from "./shared/ui/FadeIn";
 
 const sections = SECTIONS.map((s) => s.id);
@@ -86,6 +87,7 @@ export default function Home() {
           <FadeIn><Inventory /></FadeIn>
           <FadeIn><Stack /></FadeIn>
           <FadeIn><Attitude /></FadeIn>
+          <FadeIn><Contact /></FadeIn>
         </main>
       )}
     </>

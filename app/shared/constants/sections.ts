@@ -30,4 +30,9 @@ export const SECTIONS: Section[] = [
     label: "Attitude",
     isMenu: true,
   },
+  {
+    id: "contact",
+    label: "Contact",
+    isMenu: true,
+  },
 ];

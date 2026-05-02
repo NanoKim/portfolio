@@ -77,19 +77,33 @@ export function Roadmap() {
   const getItemById = (id: string | null) => items.find((item) => item.id === id);
 
   return (
-    <section id="roadmap" className="relative min-h-screen flex items-center justify-center px-6 py-32">
+    <section id="roadmap" className="relative min-h-screen flex flex-col items-center justify-center px-6 py-32">
       <div ref={containerRef} className="relative w-full max-w-5xl" style={{ isolation: "isolate" }}>
-        
         {isMdUp && (
           <svg 
-            className={`absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-500 ${path ? "opacity-100" : "opacity-0"}`} 
+            className={`absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-1000 ${path ? "opacity-100" : "opacity-0"}`} 
             style={{ zIndex: -1 }}
           >
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8">
+                   <animate attributeName="stop-color" values="#3b82f6;#a855f7;#3b82f6" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="50%" stopColor="#a855f7">
+                   <animate attributeName="stop-color" values="#a855f7;#3b82f6;#a855f7" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.8">
+                   <animate attributeName="stop-color" values="#3b82f6;#a855f7;#3b82f6" dur="3s" repeatCount="indefinite" />
+                </stop>
+              </linearGradient>
+            </defs>
             <path
               d={path}
-              stroke="rgba(99,102,241,0.6)"
-              strokeWidth="2"
+              stroke="url(#lineGradient)"
+              strokeWidth="3"
               fill="none"
+              strokeDasharray="12 6"
+              className="animate-[dash_30s_linear_infinite]"
             />
           </svg>
         )}
@@ -115,7 +129,7 @@ export function Roadmap() {
                         cIdx === 0 ? "justify-start" : cIdx === 1 ? "justify-center" : "justify-end"
                       }`}
                     >
-                      <Card item={item} />
+                      <RoadmapCard item={item} />
                     </div>
                   );
                 })}
@@ -129,70 +143,92 @@ export function Roadmap() {
                   ref={(el) => { cardRefs.current[item.id] = el; }}
                   className="relative flex flex-col items-center w-full z-10"
                 >
-                  <div className="flex justify-center w-full">
-                    <Card item={item} compact />
-                  </div>
+                  <RoadmapCard item={item} compact />
                 </div>
               ))}
             </div>
           )}
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes border-gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes dash {
+          to { stroke-dashoffset: -1000; }
+        }
+        .animate-border-gradient {
+          background-size: 200% auto;
+          animation: border-gradient 6s ease infinite;
+        }
+      `}</style>
     </section>
   );
 }
 
-function Card({
+function RoadmapCard({
   item,
   compact,
 }: {
-  item: { view: string; title: string; desc: string };
+  item: Item;
   compact?: boolean;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
+  };
+
   return (
-    <div className={compact ? "w-full" : "w-60"}>
-      <div
-        className="
-          rounded-[14px]
-          bg-slate-950 backdrop-blur-md
-          p-5 shadow-lg
-          relative
-        "
-      >
-        <div
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      className={`${compact ? "w-full" : "w-64"} relative p-[1px] rounded-xl group transition-all duration-500 hover:-translate-y-1 shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-border-gradient opacity-75 group-hover:opacity-0 transition-opacity duration-500" />
+      
+      <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_25%,#3b82f6_50%,#a855f7_75%,transparent_100%)] opacity-0 group-hover:opacity-100 group-hover:animate-[spin_3s_linear_infinite] transition-opacity duration-500" />
+
+      <div className="relative h-full p-5 bg-slate-950/95 backdrop-blur-xl rounded-[11px] overflow-hidden z-10">
+        <div 
+          className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300"
           style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: "14px",
-            padding: "1px",
-            background: "linear-gradient(90deg, #3b82f6, #a855f7)",
-            WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-            WebkitMaskComposite: "destination-out",
-            maskComposite: "exclude",
-            pointerEvents: "none",
+            background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 60%)`
           }}
         />
 
-        <div className="flex items-start justify-between relative z-10">
-          <h3 className="text-white font-semibold text-sm">
-            {item.title}
-          </h3>
-          {!compact && (
-            <span className="text-xs text-white/50">
+        <div className="relative z-20">
+          <div className="flex items-start justify-between">
+            <h3 className="text-white font-bold text-sm group-hover:text-blue-400 transition-colors duration-300">
+              {item.title}
+            </h3>
+            {!compact && (
+              <span className="text-[10px] text-white/70 uppercase tracking-wider">
+                {item.view}
+              </span>
+            )}
+          </div>
+
+          <div className="w-8 h-[1px] bg-white/20 my-3 group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-700" />
+
+          <p className="text-white/80 text-sm leading-relaxed">
+            {item.desc}
+          </p>
+
+          {compact && (
+            <p className="text-[10px] text-white/50 mt-3 uppercase tracking-tight">
               {item.view}
-            </span>
+            </p>
           )}
         </div>
-
-        <p className="text-white/60 text-sm mt-3 relative z-10">
-          {item.desc}
-        </p>
-
-        {compact && (
-          <p className="text-xs text-white/40 mt-2 relative z-10">
-            {item.view}
-          </p>
-        )}
       </div>
     </div>
   );
