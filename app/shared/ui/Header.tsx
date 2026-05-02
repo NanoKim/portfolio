@@ -10,7 +10,7 @@ type Props = {
 
 export function Header({ active, open, setOpen }: Props) {
   const handleLogoClick = () => {
-    window.location.href = "https://portfolio-nine-bay-43.vercel.app/";
+    window.location.href = "/";
   };
 
   return (
@@ -24,12 +24,11 @@ export function Header({ active, open, setOpen }: Props) {
               borderRadius: "9999px",
             }}
           >
-            {/* 1. 기본 물결 테두리 (Border) - 파랑~보라 애니메이션 */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 borderRadius: "9999px",
-                padding: "1px", // 테두리 두께
+                padding: "1px",
                 background: "linear-gradient(90deg, #3b82f6, #a855f7, #3b82f6)",
                 backgroundSize: "200% 100%",
                 animation: "border-wave 4s linear infinite",
@@ -39,18 +38,15 @@ export function Header({ active, open, setOpen }: Props) {
               }}
             />
 
-            {/* 2. 흐르는 듯한 레이저 빛 효과 (기존 유지) */}
             <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: "9999px" }}>
               <div className="absolute top-0 -left-[100%] w-full h-full animate-flow-light bg-gradient-to-r from-transparent via-blue-400/20 to-transparent z-0" />
             </div>
 
-            {/* 3. 양 끝 포인트 글로우 (기존 유지) */}
             <div className="absolute inset-0 z-0 opacity-30">
               <div className="absolute left-1/4 top-0 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
               <div className="absolute left-1/4 bottom-0 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
             </div>
 
-            {/* 로고 영역 */}
             <div
               onClick={handleLogoClick}
               className="relative z-30 flex items-center gap-2 flex-shrink-0 hover:opacity-80 transition-opacity cursor-pointer"
@@ -61,7 +57,6 @@ export function Header({ active, open, setOpen }: Props) {
               </span>
             </div>
 
-            {/* 연락처 영역 */}
             <div className="relative z-30 hidden sm:flex items-center gap-6 text-xs sm:text-sm whitespace-nowrap">
               <div className="flex items-center gap-1.5 text-white/50 hover:text-blue-400 transition-colors">
                 <img src="/icon/logo_call.svg" className="w-3.5 h-3.5 opacity-50" alt="Call" />
@@ -73,7 +68,6 @@ export function Header({ active, open, setOpen }: Props) {
               </div>
             </div>
 
-            {/* 메뉴 버튼 */}
             <button
               onClick={() => setOpen(true)}
               className="relative z-30 text-white/40 hover:text-white transition-all duration-300 p-2"
