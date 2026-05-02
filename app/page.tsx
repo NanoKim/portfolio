@@ -9,6 +9,7 @@ import { RightDock } from "./shared/ui/RightDock";
 import { Landing } from "./widgets/Landing";
 
 import { Intro } from "./widgets/Intro";
+import { WhoAmI } from "./widgets/WhoAmI";
 import { Roadmap } from "./widgets/Roadmap";
 import { Inventory } from "./widgets/Inventory";
 import { Stack } from "./widgets/Stack";
@@ -83,6 +84,7 @@ export default function Home() {
           <RightDock open={open} />
 
           <FadeIn><Intro /></FadeIn>
+          <FadeIn><WhoAmI /></FadeIn>
           <FadeIn><Roadmap /></FadeIn>
           <FadeIn><Inventory /></FadeIn>
           <FadeIn><Stack /></FadeIn>

@@ -1,6 +1,7 @@
 "use client";
 
 import { fonts } from "@/app/components/Font";
+import Title from "../components/Title";
 
 const LEFT_ITEMS = [
   { title: "몰입 & 실행", desc: "빠르게 맥락을 파악하고, 바로 실행으로 연결합니다. 중간에 멈추지 않고 결과로 증명합니다.", point: "실행" },
@@ -19,6 +20,7 @@ export function Attitude() {
 
   return (
     <section id="attitude" className="py-20 px-6 text-white overflow-hidden">
+      <Title text="Attitude" />
       <div className="max-w-6xl mx-auto flex flex-col gap-10 md:gap-14">
         
         <div className="text-center space-y-4">

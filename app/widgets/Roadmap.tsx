@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import Title from "../components/Title";
 
 type Item = {
   id: string;
@@ -78,6 +79,7 @@ export function Roadmap() {
 
   return (
     <section id="roadmap" className="relative min-h-screen flex flex-col items-center justify-center px-6 py-32">
+      <Title text="Experience" />
       <div ref={containerRef} className="relative w-full max-w-5xl" style={{ isolation: "isolate" }}>
         {isMdUp && (
           <svg 

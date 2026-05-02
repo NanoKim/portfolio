@@ -3,6 +3,7 @@
 import { StackS } from "@/app/shared/constants/stacks";
 import { Star } from "@/app/components/Star";
 import { useRef } from "react";
+import Title from "../components/Title";
 
 type StackLevel = "A" | "B" | "C";
 
@@ -103,6 +104,7 @@ export function Stack() {
       id="stack"
       className="min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden"
     >
+      <Title text="Stack" />
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
         <StackField level="A" />
         <StackField level="B" />
