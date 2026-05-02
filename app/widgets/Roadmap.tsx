@@ -78,9 +78,13 @@ export function Roadmap() {
 
   return (
     <section id="roadmap" className="relative min-h-screen flex items-center justify-center px-6 py-32">
-      <div ref={containerRef} className="relative w-full max-w-5xl">
+      <div ref={containerRef} className="relative w-full max-w-5xl" style={{ isolation: "isolate" }}>
+        
         {isMdUp && (
-          <svg className="absolute inset-0 w-full h-full pointer-events-none">
+          <svg 
+            className={`absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-500 ${path ? "opacity-100" : "opacity-0"}`} 
+            style={{ zIndex: -1 }}
+          >
             <path
               d={path}
               stroke="rgba(99,102,241,0.6)"
@@ -119,14 +123,12 @@ export function Roadmap() {
             ))
           ) : (
             <div className="relative flex flex-col gap-8 items-center w-full">
-              <div className="absolute left-1/2 -translate-x-1/2 w-[2px] h-full bg-[rgba(99,102,241,0.6)]" />
               {items.map((item) => (
                 <div
                   key={item.id}
                   ref={(el) => { cardRefs.current[item.id] = el; }}
-                  className="relative flex flex-col items-center w-full"
+                  className="relative flex flex-col items-center w-full z-10"
                 >
-                  <div className="absolute left-1/2 -translate-x-1/2 top-6 w-3 h-3 rounded-full bg-indigo-400" />
                   <div className="flex justify-center w-full">
                     <Card item={item} compact />
                   </div>
@@ -152,7 +154,7 @@ function Card({
       <div
         className="
           rounded-[14px]
-          bg-transparent backdrop-blur-md
+          bg-slate-950 backdrop-blur-md
           p-5 shadow-lg
           relative
         "

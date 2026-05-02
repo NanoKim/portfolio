@@ -88,10 +88,7 @@ export function Menu({ open, setOpen, active }: Props) {
 
         <div className="flex items-center justify-between p-4">
           <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold text-lg">NanoKim</span>
-          <button
-            onClick={handleClose}
-            className="text-xl p-1 cursor-pointer"
-          >
+          <button onClick={handleClose} className="text-xl p-1 cursor-pointer">
             ✕
           </button>
         </div>
@@ -105,11 +102,7 @@ export function Menu({ open, setOpen, active }: Props) {
                 active === item.id
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold"
                   : "text-white/80 hover:text-white hover:scale-105"
-              } ${
-                visible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
+              } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               style={{
                 transitionDelay: visible
                   ? `${index * 80}ms`
@@ -122,10 +115,11 @@ export function Menu({ open, setOpen, active }: Props) {
         </div>
 
         <div className="p-6">
-          <Social 
-            direction="row" 
-            visible={visible} 
-            baseDelay={menuSections.length * 80} 
+          <Social
+            direction="row"
+            visible={visible}
+            baseDelay={menuSections.length * 80}
+            tooltipSide="top"
           />
         </div>
       </div>

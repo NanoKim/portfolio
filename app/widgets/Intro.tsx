@@ -31,7 +31,7 @@ export function Intro() {
                 drop-shadow-[0_0_15px_rgba(148,163,184,0.1)]
               "
             >
-              비즈니스 요구사항을 명확한 코드로 풀어내는<br className="hidden md:block" />
+              비즈니스 요구사항을 명확한 코드로 풀어내는 <br className="hidden md:block" />
               실전형 개발자
             </span>
             

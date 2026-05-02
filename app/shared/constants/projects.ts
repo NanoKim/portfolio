@@ -24,7 +24,7 @@ export const SECTIONS: Project[] = [
     frontend: ["jQuery", "Ajax"],
     backend: ["Spring Boot", "Thymeleaf"],
     database: ["Oracle"],
-    etc: ["MyBatis", "Orange"]
+    etc: ["MyBatis", "Orange", "Git"]
   },
   {
     title: "금융 책무구조도 관리 솔루션 구축",

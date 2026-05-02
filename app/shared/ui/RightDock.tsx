@@ -13,7 +13,7 @@ export function RightDock({ open }: Props) {
         open ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      <Social direction="col" />
+      <Social direction="col" tooltipSide="left" />
     </div>
   );
 }

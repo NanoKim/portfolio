@@ -15,6 +15,7 @@ import { Landing } from "./widgets/Landing";
 
 import { SECTIONS } from "@/app/shared/constants/sections";
 import { Attitude } from "./widgets/Attitude";
+import { FadeIn } from "./shared/ui/FadeIn";
 
 const sections = SECTIONS.map((s) => s.id);
 
@@ -80,11 +81,11 @@ export default function Home() {
           <ScrollIndicator active={active} sections={sections} />
           <RightDock open={open} />
 
-          <Intro />
-          <Roadmap />
-          <Inventory />
-          <Stack />
-          <Attitude />
+          <FadeIn><Intro /></FadeIn>
+          <FadeIn><Roadmap /></FadeIn>
+          <FadeIn><Inventory /></FadeIn>
+          <FadeIn><Stack /></FadeIn>
+          <FadeIn><Attitude /></FadeIn>
         </main>
       )}
     </>
